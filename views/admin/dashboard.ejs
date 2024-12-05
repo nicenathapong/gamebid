@@ -1,0 +1,90 @@
+<!-- views/admin/dashboard.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | GameBid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-zinc-900 border-r border-zinc-800">
+            <div class="p-4 border-b border-zinc-800">
+                <h1 class="text-xl font-bold">Admin Panel</h1>
+            </div>
+            <nav class="p-4">
+                <a href="/admin" class="block py-2 px-4 rounded-lg bg-violet-600 text-white mb-2">Dashboard</a>
+                <a href="/admin/users" class="block py-2 px-4 text-zinc-400 hover:bg-zinc-800 rounded-lg mb-2">Users</a>
+                <a href="/admin/auctions" class="block py-2 px-4 text-zinc-400 hover:bg-zinc-800 rounded-lg mb-2">Auctions</a>
+                <a href="/" class="block py-2 px-4 text-zinc-400 hover:bg-zinc-800 rounded-lg">Back to Site</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-auto">
+            <div class="p-8">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Overview</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-zinc-900 p-6 rounded-xl">
+                            <h3 class="text-zinc-400 mb-2">Total Users</h3>
+                            <p class="text-3xl font-bold"><%= stats.totalUsers %></p>
+                        </div>
+                        <div class="bg-zinc-900 p-6 rounded-xl">
+                            <h3 class="text-zinc-400 mb-2">Active Auctions</h3>
+                            <p class="text-3xl font-bold"><%= stats.activeAuctions %></p>
+                        </div>
+                        <div class="bg-zinc-900 p-6 rounded-xl">
+                            <h3 class="text-zinc-400 mb-2">Total Bids</h3>
+                            <p class="text-3xl font-bold"><%= stats.totalBids %></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Recent Users -->
+                    <div class="bg-zinc-900 rounded-xl p-6">
+                        <h3 class="text-lg font-bold mb-4">Recent Users</h3>
+                        <div class="space-y-4">
+                            <% recentUsers.forEach(user => { %>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <div class="font-medium"><%= user.username %></div>
+                                        <div class="text-sm text-zinc-400">
+                                            Joined <%= new Date(user.createdAt).toLocaleDateString() %>
+                                        </div>
+                                    </div>
+                                    <div class="text-zinc-400">
+                                        <%= user.totalBids %> bids
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+
+                    <!-- Recent Auctions -->
+                    <div class="bg-zinc-900 rounded-xl p-6">
+                        <h3 class="text-lg font-bold mb-4">Recent Auctions</h3>
+                        <div class="space-y-4">
+                            <% recentAuctions.forEach(auction => { %>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <div class="font-medium"><%= auction.title %></div>
+                                        <div class="text-sm text-zinc-400">
+                                            Current bid: $<%= auction.currentPrice %>
+                                        </div>
+                                    </div>
+                                    <div class="text-zinc-400">
+                                        <%= auction.totalBids %> bids
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- views/categories.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories | GameBid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white">
+    <%- include('partials/navbar') %>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-8">Browse Categories</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <% categories.forEach(category => { %>
+                <a href="/auctions?category=<%= category.slug %>" 
+                   class="group bg-zinc-900 rounded-xl overflow-hidden">
+                    <div class="aspect-video relative">
+                        <img src="<%= category.imageUrl %>" 
+                             alt="<%= category.name %>"
+                             class="w-full h-full object-cover transition group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <h2 class="text-2xl font-bold mb-2"><%= category.name %></h2>
+                            <p class="text-zinc-300"><%= category.count %> active auctions</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex justify-between items-center">
+                        <span class="text-violet-400">Browse Category</span>
+                        <svg class="w-6 h-6 text-violet-400 transform group-hover:translate-x-2 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </div>
+                </a>
+            <% }) %>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

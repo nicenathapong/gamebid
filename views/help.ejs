@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help Center | GameBid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white">
+    <%- include('partials/navbar') %>
+
+    <main class="container mx-auto px-4 py-16">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl font-bold mb-8">Help Center</h1>
+
+            <div class="space-y-8">
+                <section>
+                    <h2 class="text-2xl font-bold mb-4">Frequently Asked Questions</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-zinc-900 p-6 rounded-xl">
+                            <h3 class="font-bold mb-2">How do I place a bid?</h3>
+                            <p class="text-zinc-400">Enter your bid amount in the input field and click "Place Bid". Make sure your bid is higher than the current price.</p>
+                        </div>
+
+                        <div class="bg-zinc-900 p-6 rounded-xl">
+                            <h3 class="font-bold mb-2">How do I sell my games?</h3>
+                            <p class="text-zinc-400">Click "Sell" in the navigation bar, fill out the auction details, and submit. Make sure to include clear photos and accurate descriptions.</p>
+                        </div>
+
+                        <div class="bg-zinc-900 p-6 rounded-xl">
+                            <h3 class="font-bold mb-2">What happens when I win an auction?</h3>
+                            <p class="text-zinc-400">You'll receive an email notification with payment instructions. Complete the payment within 48 hours to secure your item.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold mb-4">Contact Support</h2>
+                    <div class="bg-zinc-900 p-6 rounded-xl">
+                        <p class="text-zinc-400 mb-4">Need additional help? Our support team is here for you.</p>
+                        <div class="space-y-2">
+                            <p class="text-zinc-400">Email: <a href="mailto:support@gamebid.com" class="text-violet-400">support@gamebid.com</a></p>
+                            <p class="text-zinc-400">Hours: Monday - Friday, 9AM - 6PM EST</p>
+                            <p class="text-zinc-400">Response Time: Within 24 hours</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

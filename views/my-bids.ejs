@@ -1,0 +1,74 @@
+<!-- views/my-bids.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bids | GameBid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white">
+    <%- include('partials/navbar') %>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl font-bold mb-8">My Bids</h1>
+
+            <div class="space-y-4">
+                <% userBids.forEach(bid => { %>
+                    <div class="bg-zinc-900 rounded-xl p-6">
+                        <div class="flex items-center gap-6">
+                            <img src="<%= bid.auction.imageUrl %>" alt="" class="w-24 h-24 object-cover rounded-lg">
+                            <div class="flex-1">
+                                <h3 class="text-lg font-medium mb-1"><%= bid.auction.title %></h3>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                    <div>
+                                        <div class="text-zinc-400">Your Bid</div>
+                                        <div class="font-medium">$<%= bid.amount %></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-zinc-400">Current Price</div>
+                                        <div class="font-medium">$<%= bid.auction.currentPrice %></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-zinc-400">Your Status</div>
+                                        <div class="font-medium">
+                                            <% if (bid.amount >= bid.auction.currentPrice) { %>
+                                                <span class="text-green-400">Highest Bidder</span>
+                                            <% } else { %>
+                                                <span class="text-red-400">Outbid</span>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="text-zinc-400">Time Left</div>
+                                        <div class="font-medium"><%= bid.timeLeft %></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/auctions/<%= bid.auction.id %>" 
+                               class="flex items-center gap-2 text-violet-400 hover:text-violet-300">
+                                View Auction
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                <% }) %>
+
+                <% if (userBids.length === 0) { %>
+                    <div class="text-center py-12 text-zinc-400">
+                        <p>You haven't placed any bids yet.</p>
+                        <a href="/auctions" class="text-violet-400 hover:text-violet-300 mt-2 inline-block">
+                            Browse Auctions →
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

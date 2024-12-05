@@ -1,0 +1,47 @@
+<!-- views/category.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= category %> | GameBid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white">
+    <%- include('partials/navbar') %>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-8"><%= category %></h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <% auctions.forEach(auction => { %>
+                <div class="bg-zinc-900 rounded-xl overflow-hidden hover:ring-2 ring-violet-500 transition">
+                    <img src="<%= auction.imageUrl %>" alt="" class="w-full aspect-square object-cover">
+                    <div class="p-4">
+                        <div class="text-violet-400 text-sm mb-2"><%= auction.timeLeft %></div>
+                        <h3 class="font-medium mb-2"><%= auction.title %></h3>
+                        <div class="flex justify-between text-sm text-zinc-400">
+                            <span>Current Bid</span>
+                            <span>$<%= auction.currentPrice %></span>
+                        </div>
+                        <a href="/auctions/<%= auction.id %>" class="block text-center bg-zinc-800 hover:bg-zinc-700 mt-4 py-2 rounded-lg">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <% if (auctions.length === 0) { %>
+            <div class="text-center py-12 text-zinc-400">
+                <p>No active auctions in this category.</p>
+                <a href="/auctions" class="text-violet-400 hover:text-violet-300 mt-2 inline-block">
+                    Browse All Auctions →
+                </a>
+            </div>
+        <% } %>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

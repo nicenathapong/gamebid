@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "title": "Final Fantasy VII (PS1) - First Edition",
+    "description": "Original 1997 release, mint condition, complete with manual",
+    "imageUrl": "https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/bc272ac1102a82af30e860fd5d284518.jpg",
+    "gallery": [
+      "https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/bc272ac1102a82af30e860fd5d284518.jpg",
+      "https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/bc272ac1102a82af30e860fd5d284518.jpg",
+      "https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/bc272ac1102a82af30e860fd5d284518.jpg"
+    ],
+    "startingPrice": 200,
+    "currentPrice": 275.5,
+    "endTime": "2024-12-10T08:00:00.000Z",
+    "status": "active",
+    "sellerId": "user1",
+    "category": "retro",
+    "condition": "mint",
+    "totalBids": 12,
+    "updatedAt": "2024-12-05T17:29:29.071Z"
+  },
+  {
+    "id": "2",
+    "title": "Pokemon Red & Blue Bundle (GameBoy)",
+    "description": "Original GameBoy Pokemon Red and Blue versions, Japanese release",
+    "imageUrl": "https://www.nintendo.com/eu/media/images/10_share_images/games_15/game_boy_4/H2x1_GB_PokemonRed_enGB.jpg",
+    "startingPrice": 200,
+    "currentPrice": 452.03,
+    "endTime": "2024-12-08T20:00:00Z",
+    "status": "active",
+    "sellerId": "user2",
+    "category": "retro",
+    "condition": "good",
+    "totalBids": 8
+  },
+  {
+    "id": "3",
+    "title": "Limited Edition PS5 God of War Bundle",
+    "description": "Sealed PS5 console with God of War Ragnarök Limited Edition design",
+    "imageUrl": "https://i0.wp.com/news.qoo-app.com/en/wp-content/uploads/sites/3/2018/03/18030705584719.jpg?resize=900%2C506&ssl=1",
+    "startingPrice": 800,
+    "currentPrice": 1200,
+    "endTime": "2024-12-15T10:00:00Z",
+    "status": "active",
+    "sellerId": "user3",
+    "category": "limited",
+    "condition": "new",
+    "totalBids": 15
+  }
+]

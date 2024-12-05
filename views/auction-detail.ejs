@@ -1,0 +1,122 @@
+<!-- views/auction-detail.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= auction.title %> | GameBid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white">
+    <%- include('partials/navbar') %>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Left Column - Image Gallery -->
+            <div class="space-y-4">
+                <div class="aspect-square bg-zinc-900 rounded-xl overflow-hidden">
+                    <img src="<%= auction.imageUrl %>" alt="<%= auction.title %>" class="w-full h-full object-cover">
+                </div>
+                <div class="grid grid-cols-4 gap-4">
+                    <% auction.gallery?.forEach(img => { %>
+                        <button class="aspect-square bg-zinc-900 rounded-lg overflow-hidden">
+                            <img src="<%= img %>" alt="" class="w-full h-full object-cover">
+                        </button>
+                    <% }) %>
+                </div>
+            </div>
+
+            <!-- Right Column - Auction Info -->
+            <div class="space-y-6">
+                <div>
+                    <h1 class="text-3xl font-bold mb-2"><%= auction.title %></h1>
+                    <p class="text-zinc-400"><%= auction.description %></p>
+                </div>
+
+                <div class="bg-zinc-900 p-6 rounded-xl space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-zinc-400">Current Bid</span>
+                        <span class="text-2xl font-bold">$<%= auction.currentPrice %></span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-zinc-400">Time Left</span>
+                        <span class="text-violet-400" id="countdown" 
+                              data-end="<%= auction.endTime %>">
+                            <%= timeLeft %>
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-zinc-400">Total Bids</span>
+                        <span><%= bids.length %></span>
+                    </div>
+
+                    <% if (user && auction.status === 'active') { %>
+                        <form action="/auctions/<%= auction.id %>/bid" method="POST" class="space-y-4">
+                            <div>
+                                <label class="block text-sm text-zinc-400 mb-1">Your Bid</label>
+                                <div class="flex gap-2">
+                                    <input type="number" name="amount" step="0.01" min="<%= auction.currentPrice + 1 %>"
+                                           class="flex-1 bg-zinc-800 rounded-lg px-4 py-2 focus:ring-2 ring-violet-500"
+                                           placeholder="Enter amount">
+                                    <button type="submit" 
+                                            class="bg-violet-600 hover:bg-violet-700 px-6 py-2 rounded-lg transition">
+                                        Place Bid
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    <% } else if (!user) { %>
+                        <a href="/login" class="block text-center bg-violet-600 hover:bg-violet-700 px-6 py-3 rounded-lg transition">
+                            Login to Bid
+                        </a>
+                    <% } %>
+                </div>
+
+                <!-- Bid History -->
+                <div class="bg-zinc-900 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold mb-4">Bid History</h3>
+                    <div class="space-y-4">
+                        <% bids.forEach(bid => { %>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-zinc-400"><%= bid.username %></span>
+                                    <span class="text-xs text-zinc-500">
+                                        <%= new Date(bid.timestamp).toLocaleDateString() %>
+                                    </span>
+                                </div>
+                                <span class="font-medium">$<%= bid.amount %></span>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script>
+        function updateCountdown() {
+            const el = document.getElementById('countdown');
+            const endTime = new Date(el.dataset.end);
+            const now = new Date();
+            const diff = endTime - now;
+
+            if (diff <= 0) {
+                el.textContent = 'Auction Ended';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            el.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>

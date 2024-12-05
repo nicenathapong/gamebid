@@ -1,0 +1,32 @@
+[
+  {
+    "id": "bid1",
+    "auctionId": "1",
+    "userId": "user4",
+    "username": "GameCollector",
+    "amount": 275.5,
+    "timestamp": "2024-12-05T10:30:00Z"
+  },
+  {
+    "id": "bid2",
+    "auctionId": "1",
+    "userId": "user5",
+    "username": "RetroFan",
+    "amount": 260,
+    "timestamp": "2024-12-05T09:15:00Z"
+  },
+  {
+    "id": "1733416989285",
+    "auctionId": "2",
+    "userId": "user1733410915827",
+    "amount": 451,
+    "timestamp": "2024-12-05T16:43:09.285Z"
+  },
+  {
+    "id": "1733419709915",
+    "auctionId": "2",
+    "userId": "user1733410915827",
+    "amount": 452.03,
+    "timestamp": "2024-12-05T17:28:29.915Z"
+  }
+]

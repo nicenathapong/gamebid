@@ -1,0 +1,60 @@
+[
+    {
+        "id": "user1",
+        "username": "VintageCollector",
+        "password": "$2b$10$encrypted_hash",
+        "email": "vintage@email.com",
+        "role": "user",
+        "createdAt": "2024-01-15T08:00:00Z",
+        "totalSales": 15,
+        "totalBids": 45
+    },
+    {
+        "id": "user2",
+        "username": "RetroGamer",
+        "password": "$2b$10$encrypted_hash",
+        "email": "retro@email.com",
+        "role": "user",
+        "createdAt": "2024-02-01T10:30:00Z",
+        "totalSales": 8,
+        "totalBids": 23
+    },
+    {
+        "id": "user3",
+        "username": "GameAdmin",
+        "password": "$2b$10$encrypted_hash",
+        "email": "admin@gamebid.com",
+        "role": "admin",
+        "createdAt": "2023-12-01T09:00:00Z",
+        "totalSales": 0,
+        "totalBids": 0
+    },
+    {
+        "id": "user4",
+        "username": "GameCollector",
+        "password": "$2b$10$encrypted_hash",
+        "email": "collector@email.com",
+        "role": "user",
+        "createdAt": "2024-03-01T15:45:00Z",
+        "totalSales": 0,
+        "totalBids": 12
+    },
+    {
+        "id": "user1733410915827",
+        "username": "nicenathapong",
+        "email": "nicenathapong@gmail.com",
+        "password": "$2b$10$v/lziTE2JJDFrNyZerSfFeyIn6TVdHZZv9mlKTODbGwBR/XJAXCtu",
+        "role": "admin",
+        "createdAt": "2024-12-05T15:01:55.902Z",
+        "totalSales": 0,
+        "totalBids": 0
+    },
+    {
+        "id": "user1733417713529",
+        "username": "suwizx",
+        "email": "67070191@kmitl.ac.th",
+        "password": "$2b$10$/e6xupcCTwi0bk9UhRiNlu7E6VEFdGRjM3pQX.Sza3TZUc2dYE9o.",
+        "role": "admin",
+        "createdAt": "2024-12-05T16:55:13.593Z"
+    }
+]

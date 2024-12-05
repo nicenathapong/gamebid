@@ -1,0 +1,39 @@
+<!-- views/partials/navbar.ejs -->
+<nav class="bg-zinc-900/50 backdrop-blur-lg sticky top-0 z-50 border-b border-zinc-800">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <a href="/" class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                GameBid
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <a href="/auctions" class="text-zinc-400 hover:text-white transition">Browse</a>
+                <a href="/categories" class="text-zinc-400 hover:text-white transition">Categories</a>
+                <a href="/sell" class="text-zinc-400 hover:text-white transition">Sell</a>
+                
+                <% if (user) { %>
+                    <div class="relative group">
+                        <button class="flex items-center gap-2 text-zinc-400 hover:text-white transition">
+                            <%= user.username %>
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-zinc-900 rounded-lg shadow-lg border border-zinc-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0">
+                            <a href="/profile" class="block px-4 py-2 text-sm text-zinc-400 hover:bg-zinc-800">Profile</a>
+                            <a href="/my-bids" class="block px-4 py-2 text-sm text-zinc-400 hover:bg-zinc-800">My Bids</a>
+                            <% if (user.role === 'admin') { %>
+                                <a href="/admin" class="block px-4 py-2 text-sm text-zinc-400 hover:bg-zinc-800">Admin Panel</a>
+                            <% } %>
+                            <form action="/logout" method="POST" class="border-t border-zinc-800">
+                                <button type="submit" class="w-full text-left px-4 py-2 text-sm text-zinc-400 hover:bg-zinc-800">Logout</button>
+                            </form>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <a href="/login" class="bg-violet-600 hover:bg-violet-700 px-4 py-2 rounded-lg transition">Login</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

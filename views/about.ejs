@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | GameBid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white">
+    <%- include('partials/navbar') %>
+
+    <main class="container mx-auto px-4 py-16">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl font-bold mb-8">About GameBid</h1>
+            <div class="prose prose-invert">
+                <p class="text-lg text-zinc-400 mb-6">
+                    GameBid is the premier auction platform for gaming enthusiasts. Founded in 2024, we connect collectors and gamers worldwide, creating a trusted marketplace for rare and vintage games.
+                </p>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">Our Mission</h2>
+                <p class="text-zinc-400 mb-6">
+                    To build the most trusted marketplace for gaming collectibles, where enthusiasts can discover rare gems and sellers can reach passionate collectors.
+                </p>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">How It Works</h2>
+                <div class="grid md:grid-cols-3 gap-8 mt-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-violet-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-bold mb-2">Discover</h3>
+                        <p class="text-zinc-400">Browse our curated collection of rare and vintage games</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-violet-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-bold mb-2">Bid</h3>
+                        <p class="text-zinc-400">Place bids on your favorite items</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-violet-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h3 class="font-bold mb-2">Collect</h3>
+                        <p class="text-zinc-400">Win auctions and grow your collection</p>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold mt-12 mb-4">Contact Us</h2>
+                <p class="text-zinc-400">
+                    Need help? Contact our support team at <a href="mailto:support@gamebid.com" class="text-violet-400">support@gamebid.com</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

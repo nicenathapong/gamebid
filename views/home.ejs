@@ -1,0 +1,120 @@
+<!-- views/home.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameBid - Auction Your Games</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white">
+    <%- include('partials/navbar') %>
+
+    <!-- Hero Section -->
+    <div class="relative h-[70vh] overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20">
+            <div class="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]"></div>
+        </div>
+        <div class="relative container mx-auto px-4 h-full flex items-center">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400">
+                    Discover & Bid on Rare Games
+                </h1>
+                <p class="text-xl text-zinc-400 mb-8">
+                    Join the ultimate gaming marketplace where collectors meet their next treasures.
+                </p>
+                <div class="flex gap-4">
+                    <a href="/auctions" class="bg-violet-600 hover:bg-violet-700 px-6 py-3 rounded-lg font-medium transition">
+                        Browse Auctions
+                    </a>
+                    <a href="/register" class="border border-violet-600 px-6 py-3 rounded-lg font-medium hover:bg-violet-600/10 transition">
+                        Start Selling
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Auctions -->
+    <section class="py-16 container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8">Featured Auctions</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% featured.forEach(auction => { %>
+                <div class="bg-zinc-900 rounded-xl overflow-hidden hover:ring-2 ring-violet-500 transition">
+                    <img src="<%= auction.imageUrl %>" alt="<%= auction.title %>" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2"><%= auction.title %></h3>
+                        <div class="flex justify-between items-center text-zinc-400">
+                            <span>Current Bid</span>
+                            <span class="text-violet-400 font-medium">$<%= auction.currentPrice %></span>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <div class="text-sm text-zinc-500">
+                                Ends in <%= auction.timeLeft %>
+                            </div>
+                            <a href="/auctions/<%= auction.id %>" class="text-violet-400 hover:text-violet-300">
+                                View Details →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-16 bg-zinc-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Browse Categories</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <% categories.forEach(category => { %>
+                    <a href="/category/<%= category.slug %>" 
+                       class="group relative h-40 rounded-xl overflow-hidden">
+                        <img src="<%= category.imageUrl %>" 
+                             alt="<%= category.name %>" 
+                             class="w-full h-full object-cover transition group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <span class="absolute bottom-4 left-4 text-lg font-medium"><%= category.name %></span>
+                    </a>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-16 container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">How It Works</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-violet-600/20 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Discover Games</h3>
+                <p class="text-zinc-400">Browse through our curated collection of rare and classic games.</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-violet-600/20 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Place Your Bid</h3>
+                <p class="text-zinc-400">Participate in auctions with our secure bidding system.</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-violet-600/20 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Win & Collect</h3>
+                <p class="text-zinc-400">Win auctions and add rare games to your collection.</p>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
